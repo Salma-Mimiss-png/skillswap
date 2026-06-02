@@ -1,0 +1,66 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <div class="topbar">
+      <div>
+        <h1>Compétences</h1>
+        <p>Gérez toutes les compétences de la plateforme</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" [(ngModel)]="search" (input)="doSearch()" placeholder="Rechercher une compétence...">
+      </div>
+      <span class="count">{{ filtered.length }} compétences</span>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Compétence</th>
+            <th>Catégorie</th>
+            <th>Niveau</th>
+            <th>Utilisateur</th>
+            <th>Note</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let skill of filtered">
+            <td>
+              <div class="skill-cell">
+                <div class="skill-icon">
+                  <mat-icon>psychology</mat-icon>
+                </div>
+                <span class="skill-title">{{ skill.title }}</span>
+              </div>
+            </td>
+            <td><span class="chip category">{{ skill.category }}</span></td>
+            <td><span class="chip" [ngClass]="getLevelClass(skill.level)">{{ skill.level }}</span></td>
+            <td>
+              <div class="user-cell">
+                <div class="av">{{ skill.userName[0] }}</div>
+                <span>{{ skill.userName }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="rating">
+                <mat-icon>star</mat-icon>
+                <span>{{ skill.rating }}</span>
+              </div>
+            </td>
+            <td>
+              <button class="btn-icon delete" (click)="deleteSkill(skill.id)" title="Supprimer">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

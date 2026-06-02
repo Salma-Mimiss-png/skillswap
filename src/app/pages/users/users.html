@@ -1,0 +1,57 @@
+<div class="page-layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content">
+    <div class="page-header">
+      <div>
+        <h1>Utilisateurs</h1>
+        <p>Gérez tous les utilisateurs de la plateforme</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" [(ngModel)]="search" (input)="doSearch()" placeholder="Rechercher un utilisateur...">
+      </div>
+      <span class="count">{{ filtered.length }} utilisateurs</span>
+    </div>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Utilisateur</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filtered">
+            <td class="user-cell">
+              <div class="avatar">{{ getInitial(user.name) }}</div>
+              <span>{{ user.name }}</span>
+            </td>
+            <td class="email">{{ user.email }}</td>
+            <td><span class="badge role">{{ user.role }}</span></td>
+            <td>
+              <span class="badge" [class.active]="!user.banned" [class.banned]="user.banned">
+                {{ user.banned ? 'Banni' : 'Actif' }}
+              </span>
+            </td>
+            <td class="actions">
+              <button class="btn-icon" (click)="toggleBan(user)" [title]="user.banned ? 'Débannir' : 'Bannir'">
+                <mat-icon>{{ user.banned ? 'lock_open' : 'block' }}</mat-icon>
+              </button>
+              <button class="btn-icon delete" (click)="deleteUser(user.id)" title="Supprimer">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -37,3 +37,4 @@ build/
 .factorypath
 *.iml
 *.env
+node_modules

@@ -1,0 +1,37 @@
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 36 36" fill="none" width="28" height="28">
+        <rect width="36" height="36" rx="8" fill="rgba(255,255,255,0.15)"/>
+        <path d="M18 5L29 11.5V24.5L18 31L7 24.5V11.5Z" fill="none" stroke="white" stroke-width="2"/>
+        <path d="M12 18c0-3.3 2.7-6 6-6s6 2.7 6 5.5-2.7 4-6 4-6 1.8-6 4.5" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="18" cy="26" r="2" fill="white"/>
+      </svg>
+    </div>
+    <div>
+      <div class="brand-name">SkillSwap</div>
+      <div class="brand-sub">Administration</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a class="nav-item" routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+    </a>
+    <a class="nav-item" routerLink="/users" routerLinkActive="active">
+      <mat-icon>people</mat-icon><span>Utilisateurs</span>
+    </a>
+    <a class="nav-item" routerLink="/skills" routerLinkActive="active">
+      <mat-icon>psychology</mat-icon><span>Compétences</span>
+    </a>
+    <a class="nav-item" routerLink="/sessions" routerLinkActive="active">
+      <mat-icon>event</mat-icon><span>Sessions</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <a class="nav-item logout" routerLink="/login">
+      <mat-icon>logout</mat-icon><span>Déconnexion</span>
+    </a>
+  </div>
+</aside>
