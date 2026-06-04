@@ -1,5 +1,6 @@
 package com.skillswap.backend.sessions;
 
+import com.skillswap.backend.notifications.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -11,6 +12,10 @@ public class SessionService {
   @Autowired
   private SessionRepository sessionRepository;
 
+  @Autowired
+  private NotificationService notificationService;
+
+
   public Session createSession(Session session) {
     session.setStatus("PENDING");
     return sessionRepository.save(session);
@@ -20,21 +25,45 @@ public class SessionService {
     Session session = sessionRepository.findById(id)
       .orElseThrow(() -> new RuntimeException("Session not found"));
     session.setStatus("ACCEPTED");
-    return sessionRepository.save(session);
+    Session saved = sessionRepository.save(session);
+    notificationService.create(
+      session.getStudentId(),
+      "ACCEPTED",
+      "Session acceptée !",
+      "Ta demande pour \"" + session.getSkillTitle() + "\" a été acceptée",
+      id
+    );
+    return saved;
   }
 
   public Session rejectSession(String id) {
     Session session = sessionRepository.findById(id)
       .orElseThrow(() -> new RuntimeException("Session not found"));
     session.setStatus("REJECTED");
-    return sessionRepository.save(session);
+    Session saved = sessionRepository.save(session);
+    notificationService.create(
+      session.getStudentId(),
+      "REJECTED",
+      "Session refusée",
+      "Ta demande pour \"" + session.getSkillTitle() + "\" a été refusée",
+      id
+    );
+    return saved;
   }
 
   public Session completeSession(String id) {
     Session session = sessionRepository.findById(id)
       .orElseThrow(() -> new RuntimeException("Session not found"));
     session.setStatus("COMPLETED");
-    return sessionRepository.save(session);
+    Session saved = sessionRepository.save(session);
+    notificationService.create(
+      session.getStudentId(),
+      "COMPLETED",
+      "Session terminée",
+      "Ta session \"" + session.getSkillTitle() + "\" est terminée, pense à noter !",
+      id
+    );
+    return saved;
   }
 
   public List<Session> getMySessions(String userId) {
@@ -42,5 +71,12 @@ public class SessionService {
     all.addAll(sessionRepository.findByTeacherId(userId));
     all.addAll(sessionRepository.findByStudentId(userId));
     return all;
+  }
+  public Session markAsRated(String id, int stars) {
+    Session session = sessionRepository.findById(id)
+      .orElseThrow(() -> new RuntimeException("Session not found"));
+    session.setRated(true);
+    session.setStars(stars);
+    return sessionRepository.save(session);
   }
 }

@@ -37,4 +37,8 @@ public class SessionController {
   public ResponseEntity<List<Session>> getMySessions(@PathVariable String userId) {
     return ResponseEntity.ok(sessionService.getMySessions(userId));
   }
+  @PutMapping("/{id}/rate")
+  public ResponseEntity<Session> markRated(@PathVariable String id, @RequestParam int stars) {
+    return ResponseEntity.ok(sessionService.markAsRated(id, stars));
+  }
 }

@@ -20,6 +20,8 @@ public class Session {
   private String status;
   private String message;
   private LocalDateTime createdAt = LocalDateTime.now();
+  private boolean rated = false;
+  private Integer stars;
 
   public String getId() { return id; }
   public void setId(String id) { this.id = id; }
@@ -45,4 +47,8 @@ public class Session {
   public void setMessage(String message) { this.message = message; }
   public LocalDateTime getCreatedAt() { return createdAt; }
   public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+  public boolean isRated() { return rated; }
+  public void setRated(boolean rated) { this.rated = rated; }
+  public Integer getStars() { return stars; }
+  public void setStars(Integer stars) { this.stars = stars; }
 }
