@@ -1,11 +1,11 @@
 import {
   BidiModule
-} from "./chunk-3E5GQN2K.js";
+} from "./chunk-CHHA2HXL.js";
 import {
   DomSanitizer,
   HttpClient
-} from "./chunk-C23QI3BR.js";
-import "./chunk-AHPDWYRI.js";
+} from "./chunk-4Z5FACRP.js";
+import "./chunk-VSOIMBS4.js";
 import {
   ApplicationRef,
   ChangeDetectionStrategy,
@@ -48,7 +48,8 @@ import {
   ɵɵinject,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-GXNH7ZUN.js";
+} from "./chunk-O7KAMHV5.js";
+import "./chunk-GOMI4DH3.js";
 
 // node_modules/@angular/cdk/fesm2022/_style-loader-chunk.mjs
 var appsWithLoaders = /* @__PURE__ */ new WeakMap();

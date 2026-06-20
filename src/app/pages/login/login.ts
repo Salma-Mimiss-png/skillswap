@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase.config';
 
 @Component({
   selector: 'app-login',
@@ -20,15 +22,22 @@ export class LoginComponent {
   password: string = '';
   showPassword: boolean = false;
   remember: boolean = false;
+  errorMessage: string = '';
+  loading: boolean = false;
 
   constructor(private router: Router) {}
 
-  login() {
-    if (this.email === 'admin@skillswap.com' && this.password === 'admin123') {
+  async login() {
+    this.loading = true;
+    this.errorMessage = '';
+    try {
+      await signInWithEmailAndPassword(auth, this.email, this.password);
       localStorage.setItem('isAdmin', 'true');
       this.router.navigate(['/dashboard']);
-    } else {
-      alert('Email ou mot de passe incorrect');
+    } catch (error: any) {
+      this.errorMessage = 'Email ou mot de passe incorrect';
+    } finally {
+      this.loading = false;
     }
   }
 }
