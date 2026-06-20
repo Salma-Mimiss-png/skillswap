@@ -1,0 +1,70 @@
+<div class="layout">
+
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>Dashboard</h1>
+        <p>Bienvenue sur le panneau d'administration SkillSwap</p>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-pill">
+          <div class="admin-avatar">A</div>
+          <span>Admin</span>
+          <mat-icon>expand_more</mat-icon>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-card" *ngFor="let s of stats">
+        <div class="stat-icon-wrap" [style.background]="s.bg">
+          <mat-icon [style.color]="s.color">{{s.icon}}</mat-icon>
+        </div>
+        <div class="stat-text">
+          <div class="stat-num">{{s.value}}</div>
+          <div class="stat-lbl">{{s.label}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Utilisateurs récents</h2>
+        <button class="btn-outline" routerLink="/users">Voir tout</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>NOM</th>
+            <th>EMAIL</th>
+            <th>RÔLE</th>
+            <th>STATUT</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of recentUsers">
+            <td>
+              <div class="user-cell">
+                <div class="av">{{u.name[0]}}</div>
+                <span>{{u.name}}</span>
+              </div>
+            </td>
+            <td class="muted">{{u.email}}</td>
+            <td><span class="chip role">{{u.role}}</span></td>
+            <td>
+              <span class="chip" [class.actif]="u.status==='Actif'" [class.banni]="u.status==='Banni'">
+                <span class="dot"></span>{{u.status}}
+              </span>
+            </td>
+            <td><mat-icon class="more">more_vert</mat-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
