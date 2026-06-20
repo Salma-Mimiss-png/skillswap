@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   mongodb:
     image: mongo:6
@@ -21,7 +23,7 @@ services:
 
   frontend:
     build:
-      context: C:\Users\salma\Downloads\skillswap\backoffice
+      context: .
       dockerfile: Dockerfile.frontend
     container_name: skillswap-frontend
     ports:
