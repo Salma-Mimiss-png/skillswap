@@ -20,11 +20,15 @@
     </div>
 
     <div class="login-form">
+      <!-- Champs cachés pour bloquer l'autofill -->
+      <input type="text" style="display:none">
+      <input type="password" style="display:none">
+
       <div class="field-group">
         <label>Email</label>
         <div class="input-wrapper">
           <mat-icon>email</mat-icon>
-          <input type="email" [(ngModel)]="email" placeholder="admin@skillswap.com">
+          <input type="text" [(ngModel)]="email" placeholder="admin@skillswap.com" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')">
         </div>
       </div>
 
@@ -32,7 +36,7 @@
         <label>Mot de passe</label>
         <div class="input-wrapper">
           <mat-icon>lock</mat-icon>
-          <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="••••••••">
+          <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="••••••••" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')">
           <mat-icon class="eye" (click)="showPassword = !showPassword">
             {{ showPassword ? 'visibility_off' : 'visibility' }}
           </mat-icon>
