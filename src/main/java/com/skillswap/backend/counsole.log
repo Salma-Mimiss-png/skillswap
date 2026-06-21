@@ -1,0 +1,12 @@
+const authentifier = async (): Promise<void> => {
+  try {
+    const userResp = await loginUser(email, password);
+    setUser(userResp);
+    navigation.navigate("Profil");
+  } catch (error: any) {
+    Alert.alert(
+      "Erreur détail",
+      `Message: ${error?.message}\nStatus: ${error?.status}\n${JSON.stringify(error)}`
+    );
+  }
+};
