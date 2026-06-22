@@ -1,0 +1,72 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <div class="topbar">
+      <div>
+        <h1>Sessions</h1>
+        <p>Gérez toutes les sessions d'échange de compétences</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" [(ngModel)]="search" (input)="doSearch()" placeholder="Rechercher une session...">
+      </div>
+      <span class="count">{{ filtered.length }} sessions</span>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Compétence</th>
+            <th>Enseignant</th>
+            <th>Apprenant</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let session of filtered">
+            <td>
+              <div class="skill-cell">
+                <div class="skill-icon">
+                  <mat-icon>event</mat-icon>
+                </div>
+                <span class="skill-title">{{ session.skill }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="user-cell">
+                <div class="av">{{ session.teacher[0] }}</div>
+                <span>{{ session.teacher }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="user-cell">
+                <div class="av learner">{{ session.learner[0] }}</div>
+                <span>{{ session.learner }}</span>
+              </div>
+            </td>
+            <td class="muted">{{ session.date }}</td>
+            <td class="muted">{{ session.time }}</td>
+            <td>
+              <span class="chip" [ngClass]="getStatusClass(session.status)">
+                <span class="dot"></span>{{ session.status }}
+              </span>
+            </td>
+            <td>
+              <button class="btn-icon delete" (click)="deleteSession(session.id)" title="Supprimer">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

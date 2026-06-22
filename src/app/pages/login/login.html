@@ -1,0 +1,56 @@
+<div class="login-container">
+  <div class="dots-top">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="white"/>
+          <path d="M32 10 L50 21 L50 43 L32 54 L14 43 L14 21 Z" fill="none" stroke="#1565c0" stroke-width="3"/>
+          <path d="M24 32 C24 27 28 24 32 24 C36 24 40 27 40 31 C40 35 36 37 32 37 C28 37 24 39 24 43" stroke="#1565c0" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="43" r="2.5" fill="#1565c0"/>
+        </svg>
+      </div>
+      <h1>SkillSwap</h1>
+      <p>ADMINISTRATION</p>
+    </div>
+
+    <div class="login-form">
+      <div class="field-group">
+        <label>Email</label>
+        <div class="input-wrapper">
+          <mat-icon>email</mat-icon>
+          <input type="email" [(ngModel)]="email" placeholder="admin@skillswap.com">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Mot de passe</label>
+        <div class="input-wrapper">
+          <mat-icon>lock</mat-icon>
+          <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="••••••••">
+          <mat-icon class="eye" (click)="showPassword = !showPassword">
+            {{ showPassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </div>
+      </div>
+
+      <div class="extras">
+        <label class="remember">
+          <input type="checkbox" [(ngModel)]="remember">
+          Se souvenir de moi
+        </label>
+        <a href="#">Mot de passe oublié ?</a>
+      </div>
+
+      <button class="btn-login" (click)="login()">
+        <mat-icon>login</mat-icon>
+        Se connecter
+      </button>
+    </div>
+  </div>
+</div>
