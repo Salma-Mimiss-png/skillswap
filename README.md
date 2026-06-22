@@ -1,59 +1,111 @@
-# Backoffice
+#Vous trouverez le code source dans la branche Master 
+# SkillSwap 🔄
+> Échangez vos compétences, développez-vous ensemble.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+SkillSwap est une application mobile communautaire qui permet aux utilisateurs d'échanger leurs compétences sans argent — vous enseignez ce que vous savez, vous apprenez ce dont vous avez besoin.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Fonctionnalités
 
-```bash
-ng serve
-```
+- **Profil de compétences** — Listez ce que vous offrez et ce que vous cherchez à apprendre
+- **Recherche de compétences** — Trouvez des membres dont les compétences correspondent à vos besoins
+- **Gestion des sessions** — Planifiez et gérez vos rendez-vous d'apprentissage
+- **Système d'évaluation** — Notez vos sessions pour renforcer la confiance de la communauté
+- **Administration** — Modération des compétences et gestion des utilisateurs et sessions
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Démarrage rapide
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prérequis
 
-```bash
-ng generate component component-name
-```
+- Node.js >= 18.x
+- npm ou yarn
+- Java >= 17
+- MongoDB 
+- React Native CLI
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Installation — Back-end (Spring Boot)
 
 ```bash
-ng build
+# Cloner le dépôt
+git clone https://github.com/Salma-Mimiss-png/skillswap.git
+cd skillswap
+
+# Configurer la connexion MongoDB dans src/main/resources/application.properties
+# spring.data.mongodb.uri=mongodb://localhost:27017/skillswap
+
+# Lancer l'application Spring Boot
+./mvnw spring-boot:run
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Le serveur sera disponible sur `http://localhost:8085`.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Installation — Application mobile (React Native)
 
 ```bash
-ng test
+cd mobile
+
+# Installer les dépendances
+npm install
+
+# Android
+npx react-native run-android
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🗂️ Structure du projet
 
-```bash
-ng e2e
+```
+skillswap/
+├── src/                                        # Back-end Spring Boot
+│   └── main/java/com/skillswap/backend/
+│       ├── users/                              # Feature : utilisateurs
+│       │   ├── User.java
+│       │   ├── UserController.java
+│       │   ├── UserService.java
+│       │   └── UserRepository.java
+│       ├── skills/                             # Feature : compétences
+│       │   ├── Skill.java
+│       │   ├── SkillController.java
+│       │   ├── SkillService.java
+│       │   └── SkillRepository.java
+│       ├── sessions/                           # Feature : sessions d'échange
+│       └── admin/                              # Feature : administration
+├── mobile/                                     # Application mobile React Native
+│   └── src/
+│       ├── screens/                            # Écrans
+│       │   ├── HomeScreen.tsx
+│       │   ├── SearchScreen.tsx
+│       │   ├── SkillDetailScreen.tsx
+│       │   ├── skillUsersScreen.tsx
+│       │   ├── Connexion.tsx
+│       │   ├── Inscription.tsx
+│       │   ├── Profil.tsx
+│       │   └── EditProfile.tsx
+│       ├── services/                           # Appels API
+│       │   └── skillService.ts
+│       ├── components/                         # Composants réutilisables
+│       │   ├── InputWithIcon.tsx
+│       │   ├── AuthProvider.tsx
+│       │   ├── Menu.tsx
+│       │   └── SideMenu.tsx
+│       └── navigation/                         # Navigation
+│           └── AppNavigator.tsx
+└── pom.xml
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 🛠️ Stack technique
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Couche | Technologie |
+|--------|-------------|
+| Application mobile | React Native (TypeScript) |
+| Back-end | Spring Boot (Java 17) |
+| Base de données | MongoDB |
+| Navigation mobile | React Navigation |
+| API | REST / JSON |
+| Build back-end | Maven |
