@@ -1,9 +1,9 @@
 package com.skillswap.backend.admin;
 
-import com.skillswap.backend.model.User;
-import com.skillswap.backend.repository.UserRepository;
-import com.skillswap.backend.repository.SkillRepository;
-import com.skillswap.backend.repository.SessionRepository;
+import com.skillswap.backend.users.User;
+import com.skillswap.backend.users.UserRepository;
+import com.skillswap.backend.skills.SkillRepository;
+import com.skillswap.backend.sessions.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
